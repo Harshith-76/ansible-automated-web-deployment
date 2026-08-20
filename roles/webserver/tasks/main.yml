@@ -1,0 +1,35 @@
+---
+- name: Update apt package index
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install required packages
+  apt:
+    name:
+      - nginx
+      - git
+    state: present
+
+- name: Create application directory
+  file:
+    path: /opt/myapp
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Deploy website template
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart nginx
+
+- name: Ensure nginx is running
+  service:
+    name: nginx
+    state: started
+    enabled: yes

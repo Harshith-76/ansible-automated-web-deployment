@@ -1,0 +1,35 @@
+---
+- name: Setup Ansible Target
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Update apt package index
+      apt:
+        update_cache: yes
+
+    - name: Install required packages
+      apt:
+        name:
+          - git
+          - curl
+          - nginx
+        state: present
+
+    - name: Create application directory
+      file:
+        path: /opt/myapp
+        state: directory
+        mode: '0755'
+    - name: Deploy website
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+        mode: '0644'
+
+    - name: Make sure nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes

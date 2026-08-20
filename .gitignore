@@ -1,0 +1,21 @@
+# SSH keys
+*.pem
+*.key
+id_rsa
+id_ed25519
+id_ecdsa
+
+# Ansible temporary files
+*.retry
+
+# Environment / secrets
+.env
+*.secret
+
+# Terraform state (if we ever experiment here)
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# OS/editor files
+.DS_Store

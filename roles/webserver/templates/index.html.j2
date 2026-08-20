@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ansible Deployment</title>
+</head>
+
+<body>
+
+    <h1>🚀 Deployed using Ansible</h1>
+
+    <p>This website was automatically configured by Ansible.</p>
+
+    <p>Server: {{ ansible_facts['hostname'] }}</p>
+
+    <p>Operating System: {{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}</p>
+
+    <p>Managed by: Ansible Controller</p>
+
+</body>
+</html>

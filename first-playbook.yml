@@ -1,0 +1,10 @@
+---
+- name: My first Ansible playbook
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create a file on the target
+      file:
+        path: /tmp/ansible-test.txt
+        state: touch
